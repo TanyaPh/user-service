@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package api;
+
+option go_package = "user-sevice/proto";
+
+service Userservice {
+    rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
+    rpc GetUser(GetUserRequest) returns (GetUserResponse);
+    rpc ListUsers(ListUsersRequest) returns (stream ListUsersResponse);
+    rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse);
+    rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse);
+}
+
+message CreateUserRequest {
+    string name = 1;
+    string address = 2;
+    string phone = 3;
+}
+
+message CreateUserResponse {
+    int64 id = 1;
+}
+
+message GetUserRequest {
+    int64 id = 1;
+}
+
+message GetUserResponse {
+    int64 id = 1;
+    string name = 2;
+    string address = 3;
+    string phone = 4;
+    int64 created_at = 5;
+}
+
+message ListUsersRequest {}
+
+message ListUsersResponse {
+    int64 id = 1;
+    string name = 2;
+    string address = 3;
+    string phone = 4;
+    int64 created_at = 5;
+}
+
+
+message UpdateUserRequest {
+    int64 id = 1;
+    string name = 2;
+    string address = 3;
+    string phone = 4;
+}
+message UpdateUserResponse {}
+
+message DeleteUserRequest {
+    int64 id = 1;
+}
+
+message DeleteUserResponse {}
